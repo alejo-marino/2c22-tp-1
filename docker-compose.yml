@@ -14,6 +14,14 @@ services:
         links:
             - node
 
+    box:
+        image: arqsoft/bbox:202202.1
+        volumes:
+            - ./config.bbox:/opt/bbox/config.properties:ro
+        ports:
+            - "9090:9090"
+            - "9091:9091"
+
     graphite:
         image: graphiteapp/graphite-statsd:1.1.10-3
         volumes:
