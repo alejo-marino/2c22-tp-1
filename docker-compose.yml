@@ -1,6 +1,9 @@
 version: '2'
 
 services:
+    node: 
+        build: ./app
+
     nginx:
         image: nginx:1.23.1
         ports:
