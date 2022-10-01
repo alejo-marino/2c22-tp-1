@@ -11,21 +11,24 @@ config:
   pool: 50 # All HTTP requests from all virtual users will be sent over the same connections
 
   phases:
-    - name: Warm-up
+    - name: Warm-up - 1 usuario cada 6 segundos
       duration: 30
-      arrivalRate: 20
-      rampTo: 100
-    - name: Ramp
-      duration: 120
-      arrivalRate: 20
-      rampTo: 100
-    - name: Sustained Load
-      duration: 250
-      arrivalRate: 100
-    
-
+      arrivalCount: 5
+      # rampTo: 2
+    - name: Ramp - 1 usuario cada 4.6 segundos
+      duration: 60
+      arrivalCount: 13
+    - name: Ramp - 1 usuario cada 4.2 segundos
+      duration: 30
+      arrivalCount: 7
+    - name: Pause
+      pause: 20
+    - name: Final - 1 usuario cada 6 segundos
+      duration: 30
+      arrivalCount: 5
+      
 scenarios:
-  - name: Heavy (/heavy)
+  - name: Heavy (/)
     flow:
       - get:
           url: '/heavy'
