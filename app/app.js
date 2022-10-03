@@ -1,13 +1,20 @@
 const express = require('express');
 const request = require('request');
 const uuid = require('uuid');
+const SDC = require('statsd-client')
 
 const app = express();
 const id = uuid.v4();
 const PORT = 3000;
 const TIMEOUT = 5 * 1000;
 
+sdc = new SDC({host: 'localhost', port: 8125});
+
 app.get('/', (req, res) => {
+    const begin = new Date();
+    sdc.timing('helloserver.hello-world.request-time', begin);
+    sdc.increment('helloserver.hello-world.request-count');
+    sdc.gauge('some.gauge', 10); // Set gauge to 10
     res.status(200).send(`[${id}] ping\n`);
 });
 
