@@ -17,6 +17,7 @@ app.get('/', (req, res) => {
     // sdc.timing('helloserver.hello-world.request-time', begin);
     // sdc.increment('helloserver.hello-world.request-count');
     // sdc.gauge('some.gauge', 10); // Set gauge to 10
+    let start = new Date().getTime()
 
     console.log('Creo una metrica');
 
@@ -26,6 +27,11 @@ app.get('/', (req, res) => {
     metrics.gauge('fromcode.one', 100);
     metrics.set('set.one', 10);
 
+    
+    let end = new Date().getTime()
+    let elapsedTime = end - start;
+    console.log('Tiempo de ejecucion: ' + elapsedTime + ' ms');
+    metrics.gauge('server.responsetime', elapsedTime);
 
     res.status(200).send(`[${id}] ping\n`);
 });
