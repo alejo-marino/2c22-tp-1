@@ -24,7 +24,7 @@
     "editable": true,
     "fiscalYearStartMonth": 0,
     "graphTooltip": 0,
-    "id": 4,
+    "id": 5,
     "links": [],
     "liveNow": false,
     "panels": [
@@ -349,6 +349,7 @@
               "axisColorMode": "text",
               "axisLabel": "",
               "axisPlacement": "auto",
+              "axisSoftMin": 0,
               "barAlignment": 0,
               "drawStyle": "line",
               "fillOpacity": 0,
