@@ -1,0 +1,40 @@
+config:
+  target: "https://localhost:5555/inscripciones"
+  phases:
+    - duration: 600
+      arrivalRate: 5
+      name: Warm up
+      maxVusers: 70
+    - duration: 600
+      arrivalRate: 10
+      rampTo: 120
+      name: Ramp up load
+    - duration: 600
+      arrivalRate: 50
+      name: Sustained load
+  payload:
+    -
+    path: "materias.csv"
+    fields:
+      - "materia"
+      - "materiaID"
+    -
+    path: "carreras.csv"
+    fields:
+      - "carrera"
+      
+
+scenarios:
+  - name: "Incribirse a materias"
+    flow:
+      - get:
+          url: "/login"
+      - get:
+          url: "/carrera/{{ carrera }}"           
+      - post:
+          url: "/incribirse/{{ materiaID }}"
+      - think: 5
+      - post:
+          url: "/cart"
+          json:
+            productId: "{{ productId }}"
