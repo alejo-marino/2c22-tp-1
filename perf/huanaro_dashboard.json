@@ -33,10 +33,7 @@
         "bars": false,
         "dashLength": 10,
         "dashes": false,
-        "datasource": {
-          "type": "graphite",
-          "uid": "uboKfx4Vk"
-        },
+        "datasource": "Graphite",
         "fill": 7,
         "fillGradient": 0,
         "gridPos": {
@@ -79,10 +76,7 @@
         "steppedLine": false,
         "targets": [
           {
-            "datasource": {
-              "type": "graphite",
-              "uid": "uboKfx4Vk"
-            },
+            "datasource": "Graphite",
             "refCount": 0,
             "refId": "B",
             "target": "aliasByMetric(stats.gauges.$server.scenarioCounts.*)",
@@ -131,10 +125,7 @@
         "bars": false,
         "dashLength": 10,
         "dashes": false,
-        "datasource": {
-          "type": "graphite",
-          "uid": "uboKfx4Vk"
-        },
+        "datasource": "Graphite",
         "fill": 7,
         "fillGradient": 0,
         "gridPos": {
@@ -177,27 +168,18 @@
         "steppedLine": false,
         "targets": [
           {
-            "datasource": {
-              "type": "graphite",
-              "uid": "uboKfx4Vk"
-            },
+            "datasource": "Graphite",
             "refId": "B",
             "target": "alias(sumSeries(stats.gauges.$server.errors.*), 'Errored')",
             "textEditor": true
           },
           {
-            "datasource": {
-              "type": "graphite",
-              "uid": "uboKfx4Vk"
-            },
+            "datasource": "Graphite",
             "refId": "A",
             "target": "alias(stats.gauges.$server.requestsCompleted, 'Completed')"
           },
           {
-            "datasource": {
-              "type": "graphite",
-              "uid": "uboKfx4Vk"
-            },
+            "datasource": "Graphite",
             "refId": "C",
             "target": "alias(stats.gauges.$server.pendingRequests, 'Pending')"
           }
@@ -237,10 +219,7 @@
         "bars": false,
         "dashLength": 10,
         "dashes": false,
-        "datasource": {
-          "type": "graphite",
-          "uid": "uboKfx4Vk"
-        },
+        "datasource": "Graphite",
         "fill": 1,
         "fillGradient": 0,
         "gridPos": {
@@ -284,19 +263,13 @@
         "steppedLine": false,
         "targets": [
           {
-            "datasource": {
-              "type": "graphite",
-              "uid": "uboKfx4Vk"
-            },
+            "datasource": "Graphite",
             "refCount": 0,
             "refId": "C",
             "target": "alias(stats.gauges.$server.scenarioDuration.max, 'Upper')"
           },
           {
-            "datasource": {
-              "type": "graphite",
-              "uid": "uboKfx4Vk"
-            },
+            "datasource": "Graphite",
             "refCount": 0,
             "refId": "B",
             "target": "alias(stats.gauges.$server.scenarioDuration.median, 'Median')"
@@ -335,10 +308,7 @@
         }
       },
       {
-        "datasource": {
-          "type": "graphite",
-          "uid": "uboKfx4Vk"
-        },
+        "datasource": "Graphite",
         "fieldConfig": {
           "defaults": {
             "color": {
@@ -415,10 +385,7 @@
         },
         "targets": [
           {
-            "datasource": {
-              "type": "graphite",
-              "uid": "uboKfx4Vk"
-            },
+            "datasource": "Graphite",
             "refId": "A",
             "target": "stats.gauges.server.responsetime"
           }
@@ -433,10 +400,7 @@
         "bars": false,
         "dashLength": 10,
         "dashes": false,
-        "datasource": {
-          "type": "graphite",
-          "uid": "uboKfx4Vk"
-        },
+        "datasource": "Graphite",
         "fill": 1,
         "fillGradient": 0,
         "gridPos": {
@@ -494,10 +458,7 @@
         "steppedLine": false,
         "targets": [
           {
-            "datasource": {
-              "type": "graphite",
-              "uid": "uboKfx4Vk"
-            },
+            "datasource": "Graphite",
             "hide": false,
             "refCount": 0,
             "refId": "C",
@@ -505,10 +466,7 @@
             "textEditor": false
           },
           {
-            "datasource": {
-              "type": "graphite",
-              "uid": "uboKfx4Vk"
-            },
+            "datasource": "Graphite",
             "hide": false,
             "refCount": 0,
             "refId": "B",
