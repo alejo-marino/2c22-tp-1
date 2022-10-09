@@ -1,0 +1,32 @@
+config:
+  environments:
+    node:
+      target: 'http://localhost:5555'
+      plugins:
+        statsd:
+          host: localhost
+          port: 8125
+          prefix: "artillery-node"
+
+  pool: 50 # All HTTP requests from all virtual users will be sent over the same connections
+
+  phases:
+    - name: Warm-up - 100 usuario/s
+      duration: 30
+      arrivalCount: 3000
+    - name: Ramp 1 - 180 usuario/s
+      duration: 20
+      arrivalCount: 3600
+    - name: Ramp 2 - 260 usuario/s
+      duration: 20
+      arrivalCount: 5200
+    - name: Ramp 3 - 340 usuario/s
+      duration: 400
+      arrivalCount: 13600
+   
+
+scenarios:
+  - name: BlackBox2 (/bbox2)
+    flow:
+      - get:
+          url: '/bbox2'

@@ -1,6 +1,9 @@
 version: '2'
 
 services:
+    node: 
+        build: ./app 
+
     nginx:
         image: nginx:1.23.1
         ports:
@@ -10,6 +13,11 @@ services:
             - ./store/static/files:/static:ro
         links:
             - node
+
+    box:
+        image: arqsoft/bbox:202202.1
+        volumes:
+            - ./config.bbox:/opt/bbox/config.properties:ro
 
     graphite:
         image: graphiteapp/graphite-statsd:1.1.10-3
