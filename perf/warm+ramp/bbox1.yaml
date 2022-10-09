@@ -21,8 +21,37 @@ config:
       duration: 20
       arrivalCount: 52
     - name: Ramp 3 - 3.4 usuario/s
-      duration: 400
-      arrivalCount: 1360
+      duration: 20
+      arrivalCount: 68
+    - name: Ramp 4 - 4.2 usuario/s
+      duration: 20
+      arrivalCount: 84
+    - name: Ramp 5 - 5 usuario/s
+      duration: 20
+      arrivalCount: 100
+    - name: Ramp 6 - 5.8 usuario/s
+      duration: 20
+      arrivalCount: 116
+    - name: Ramp 7 - 6.2 usuario/s
+      duration: 20
+      arrivalCount: 124
+    - name: Ramp 8 - 6.4 usuario/s
+      duration: 20
+      arrivalCount: 128
+    - name: Ramp 9 - 6.6 usuario/s
+      duration: 20
+      arrivalCount: 132
+    - name: Ramp 10 - 6.8 usuario/s
+      duration: 20
+      arrivalCount: 136
+    - name: Ramp 11 - 7.0 usuario/s
+      duration: 20
+      arrivalCount: 140
+    - name: Pause
+      pause: 20 
+    - name: Sustained Load - 7 usuario/s
+      duration: 200
+      arrivalCount: 1400
     
     
 
