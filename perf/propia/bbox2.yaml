@@ -11,23 +11,22 @@ config:
   pool: 50 # All HTTP requests from all virtual users will be sent over the same connections
 
   phases:
-    - name: Warm-up - 1 usuario/s
+    - name: Warm-up - 100 usuario/s
+      duration: 30
+      arrivalCount: 3000
+    - name: Ramp 1 - 180 usuario/s
       duration: 20
-      arrivalCount: 20
-    - name: Ramp 1 - 1.8 usuario/s
+      arrivalCount: 3600
+    - name: Ramp 2 - 260 usuario/s
       duration: 20
-      arrivalCount: 36
-    - name: Ramp 2 - 2.6 usuario/s
-      duration: 20
-      arrivalCount: 52
-    - name: Ramp 3 - 3.4 usuario/s
+      arrivalCount: 5200
+    - name: Ramp 3 - 340 usuario/s
       duration: 400
-      arrivalCount: 1360
-    
-    
+      arrivalCount: 13600
+   
 
 scenarios:
-  - name: BlackBox1 (/bbox1)
+  - name: BlackBox2 (/bbox2)
     flow:
       - get:
-          url: '/bbox1'
+          url: '/bbox2'
