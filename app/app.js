@@ -16,7 +16,6 @@ const GAUGE_NAME = 'server.responsetime';
 
 app.get('/', (req, res) => {
     let start = new Date().getTime()
-    
     let end = new Date().getTime()
     let elapsedTime = end - start;
     console.log('Tiempo de ejecucion: ' + elapsedTime + ' ms');
@@ -34,9 +33,9 @@ app.get('/timeout', (req, res) => {
 //busywait
 app.get('/heavy', (req, res) => {
     let start = new Date().getTime()
-    
+
     for (t =  new Date(); new Date() - t < TIMEOUT; );
-    
+
     let end = new Date().getTime()
     let elapsedTime = end - start;
     console.log('Tiempo de ejecucion: ' + elapsedTime + ' ms');
@@ -57,7 +56,6 @@ app.get('/bbox1', (req, res) => {
         res.send(`[${id}] bbox1 ` + response.statusCode + "\n")
     })
 });
-  
 app.get('/bbox2', (req, res) => {
     var start = new Date().getTime()
 
@@ -74,7 +72,7 @@ app.get('/bbox2', (req, res) => {
 //inscripciones
 app.get('/inscripciones/login', (req, res)=>{
 
-    res.status(200).send(`login inscripcion`);
+    res.status(200).send(`login sistema inscripciones`);
 })
 
 
@@ -88,9 +86,9 @@ app.get('/inscripciones/materias', (req, res)=>{
     res.status(200).send(`lista materia inscripto`);
 })
 
-app.get('/inscripciones/materia', (req, res)=>{
+app.get('/inscripciones/materiasdisponibles', (req, res)=>{
 
-    res.status(200).send(`materia info`);
+    res.status(200).send(`lista materias disponibles`);
 })
 
 app.get('/inscripciones/inscribirse', (req, res)=>{
@@ -98,6 +96,10 @@ app.get('/inscripciones/inscribirse', (req, res)=>{
     res.status(200).send(`materia inscribirse`);
 })
 
+app.get('/inscripciones/carrera', (req, res)=>{
+
+    res.status(200).send(`seleccionar  una carrera`);
+})
 
 app.listen (PORT, () => {
     console.log(`[${id}] Server is up on port`, PORT);
