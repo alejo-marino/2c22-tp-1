@@ -71,6 +71,34 @@ app.get('/bbox2', (req, res) => {
     })
 });
 
+//inscripciones
+app.get('/inscripciones/login', (req, res)=>{
+
+    res.status(200).send(`login inscripcion`);
+})
+
+
+app.get('/inscripciones/logout', (req, res)=>{
+
+    res.status(200).send(`logout inscripciones`);
+})
+
+app.get('/inscripciones/materias', (req, res)=>{
+
+    res.status(200).send(`lista materia inscripto`);
+})
+
+app.get('/inscripciones/materia', (req, res)=>{
+
+    res.status(200).send(`materia info`);
+})
+
+app.get('/inscripciones/inscribirse', (req, res)=>{
+
+    res.status(200).send(`materia inscribirse`);
+})
+
+
 app.listen (PORT, () => {
     console.log(`[${id}] Server is up on port`, PORT);
 });
