@@ -40,4 +40,4 @@ scenarios:
                url: "/bbox2"
         count: 4
       - get:
-          url: "/logout"
+          url: "/inscripciones/logout"
