@@ -31,8 +31,10 @@ scenarios:
           url: "/login"
       - get:
           url: "/carrera/{{ carrera }}"           
-      - post:
-          url: "/incribirse/{{ materiaID }}"
+      - loop:  
+        - post:
+            url: "/incribirse/{{ materiaID }}"
+      count: 4
       - think: 5
       - post:
           url: "/cart"
