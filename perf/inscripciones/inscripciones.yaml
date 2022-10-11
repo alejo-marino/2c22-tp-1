@@ -11,30 +11,30 @@ config:
   phases:
 
 
-    - duration: 2
-      arrivalRate: 14
-      name: pico inicial p1
+    - duration: 10
+      arrivalCount: 70
+      name: Pico inicial prioridad 1
       maxVusers: 120
-    - duration: 8
-      arrivalRate: 7
-      name: Pre inicio inscripcion p1
+    - duration: 50
+      arrivalCount: 45
+      name: Periodo prioridad 1
       maxVusers: 120
-    - duration: 60
-      arrivalCount: 50
-      name: inicio prioridad 1
+    - duration: 10
+      arrivalCount: 5
+      name: Finalizacion periodo prioridad 1
       maxVusers: 120
-    - duration: 1
-      arrivalCount: 30
-      name: pico inicial p2
-      maxVusers: 150 # permitimos solapamiento con prioridad 1
-    - duration: 7
-      arrivalRate: 6
-      name: Pre inicio inscripcion p2
-      maxVusers: 150
-    - duration: 60
-      arrivalCount: 50
-      name: inicio prioridad 2
-      maxVusers: 120
+    - duration: 10
+      arrivalCount: 80
+      name: Pico inicial prioridad 2
+      maxVusers: 250 # permitimos solapamiento con prioridad 1
+    - duration: 50
+      arrivalCount: 45
+      name: Periodo prioridad 1
+      maxVusers: 250
+    - duration: 10
+      arrivalCount: 5
+      name: Finalizacion periodo prioridad 2
+      maxVusers: 250
       
 scenarios:
   - name: "Incribirse a materias"

@@ -8,11 +8,14 @@ const id = uuid.v4();
 const PORT = 3000;
 const TIMEOUT = 5 * 1000;
 
-// sdc = new SDC({host: 'localhost', port: 8125});
 var lynx = require('lynx');
 var metrics = new lynx('graphite', 8125);
 
 const GAUGE_NAME = 'server.responsetime';
+
+function getRandomMillisecs(min, max) {
+    return (Math.floor(Math.random() * (max - min + 1)) + min);
+}
 
 app.get('/', (req, res) => {
     let start = new Date().getTime()
@@ -71,34 +74,53 @@ app.get('/bbox2', (req, res) => {
 
 //inscripciones
 app.get('/inscripciones/login', (req, res)=>{
-
-    res.status(200).send(`login sistema inscripciones`);
+    let login_timeout = getRandomMillisecs(0, 50);
+    setTimeout(() => {
+        res.status(200).send(`[${id}] login sistema inscripciones\n`);
+    }, login_timeout);
 })
 
 
 app.get('/inscripciones/logout', (req, res)=>{
 
-    res.status(200).send(`logout inscripciones`);
+    let logout_timeout = getRandomMillisecs(5, 20);
+    setTimeout(() => {
+        res.status(200).send(`[${id}] logout inscripciones\n`);
+    }, logout_timeout);
 })
 
 app.get('/inscripciones/materias', (req, res)=>{
 
-    res.status(200).send(`lista materia inscripto`);
+    let materias_timeout = getRandomMillisecs(90, 100);
+    setTimeout(() => {
+        res.status(200).send(`[${id}] materias inscripto\n`);
+    }, materias_timeout);
 })
 
 app.get('/inscripciones/materiasdisponibles', (req, res)=>{
 
-    res.status(200).send(`lista materias disponibles`);
+    let disponibles_timeout = getRandomMillisecs(120, 180);
+    setTimeout(() => {
+        res.status(200).send(`[${id}] lista materias disponibles\n`);
+    }, disponibles_timeout);
 })
 
 app.get('/inscripciones/inscribirse', (req, res)=>{
 
-    res.status(200).send(`materia inscribirse`);
+    request.get('http://box:9091/').on('response', (response) => {
+        console.log(`[${id}] bbox2 materia inscribirse` + response.statusCode)
+        
+        res.status(200).send(`[${id}] inscribirse`)
+    })
 })
 
 app.get('/inscripciones/carrera', (req, res)=>{
 
-    res.status(200).send(`seleccionar  una carrera`);
+    request.get('http://box:9090/').on('response', (response) => {
+        console.log(`[${id}] bbox1 carrera` + response.statusCode)
+        
+        res.status(200).send(`[${id}] carrera`)
+    })
 })
 
 app.listen (PORT, () => {
