@@ -1,7 +1,7 @@
 config:
   environments:
     node:
-      target: 'http://localhost:5555'
+      target: 'http://localhost:5555/inscripciones'
       plugins:
         statsd:
           host: localhost
@@ -9,35 +9,50 @@ config:
           prefix: "artillery-node"
 
   phases:
-    - duration: 10
+
+
+    - duration: 2
+      arrivalRate: 14
+      name: pico inicial p1
+      maxVusers: 120
+    - duration: 8
       arrivalRate: 7
-      name: Pre inicio inscripcion
-      maxVusers: 70
+      name: Pre inicio inscripcion p1
+      maxVusers: 120
     - duration: 60
       arrivalCount: 50
-      name: inicio inscripcion
+      name: inicio prioridad 1
       maxVusers: 120
-
-
-
-
+    - duration: 1
+      arrivalCount: 30
+      name: pico inicial p2
+      maxVusers: 150 # permitimos solapamiento con prioridad 1
+    - duration: 7
+      arrivalRate: 6
+      name: Pre inicio inscripcion p2
+      maxVusers: 150
+    - duration: 60
+      arrivalCount: 50
+      name: inicio prioridad 2
+      maxVusers: 120
+      
 scenarios:
   - name: "Incribirse a materias"
     flow:
       - get:
-          url: "/bbox2"
+          url: "/login"
       - think: 10  # tiempo para seleccionar una carrera
       - get:
-          url: "/inscripciones/carrera"
+          url: "/carrera"
       - loop:
            - get:
-               url: "/timeout"
+               url: "/materias"
            - think: 15  #tiempo para ver materias en las que esta inscripto
            - get:
-               url: "/timeout"
+               url: "/materiasdisponibles"
            - think: 70  #tiempo para seleccionar una materia
            - get:
-               url: "/bbox2"
+               url: "/inscribirse"
         count: 4
       - get:
-          url: "/inscripciones/logout"
+          url: "/logout"
